@@ -1,0 +1,46 @@
+<section class="site-section vlog-section text-center" id="vlog">
+  <header class="section-header">
+    <h2>
+      Video Log
+    </h2>
+  </header>
+  <div class="section-content">
+    <blockquote cite="{{ site.url }}">
+      This video log is a companion to the corresponding <a href="{{ site.youtube }}" target="_blank">@SitcomSleepers</a>
+      YouTube channel.
+    </blockquote>
+    <div class="row vlog-articles-container vlog-preview">
+      {% for post in site.posts limit:3 %}
+      <div class="col-lg">
+        <article class="vlog-article clearfix">
+          <header class="article-header">
+            <div class="img-wrap">
+              <a href="{{ site.baseurl }}{{ post.url }}">
+                {% if post.youtubeid %}
+                <img src="https://img.youtube.com/vi/{{ post.youtubeid }}/mqdefault.jpg" alt="Article YouTube Thumbnail" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/{{ post.youtubeid }}/maxresdefault.jpg';">
+                {% elsif post.image %}
+                <img src="images/vlog/{{ post.image }}" alt="Article Video Log Image">
+                {% endif %}
+              </a>
+            </div>
+            <div class="article-title">
+              <h3 class="title"><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h3>
+            </div>
+          </header>
+          <div class="article-content">
+            <div class="article-text">
+              <a href="{{ site.baseurl }}{{ post.url }}">
+                <p>{{ post.excerpt | strip_html | truncatewords:50 }}</p>
+              </a>
+            </div>
+          </div>
+        </article>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="text-center">
+      <hr class="small">
+      <a href="vlog.html" class="btn btn-primary col-md-3 col-sm-5 col-xs-8">View all posts</a>
+    </div>
+  </div>
+</section>
